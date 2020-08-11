@@ -2,11 +2,7 @@
 
 
 # # ******************************
-<<<<<<< HEAD
 # # 对图片进行采样，没什么屁用了
-=======
-# # 提取colmap建图用图片
->>>>>>> d4ec8b89a4381bb5e64bdcefcc2c3dadc1d52299
 # # ******************************
 # import cv2
 # import os
@@ -33,7 +29,6 @@
 
 
 # ************************
-<<<<<<< HEAD
 # transferPictures()用于分割建图用图片和查询图片
 # 将文件夹下的不同类别的文件夹中的部分图片转移到另一个文件夹下的相同类别的文件夹下，并删除原文件夹中的相应图片（类似于剪切）
 # create_querylist()用于生成hfnet用的querylist
@@ -42,14 +37,6 @@
 import cv2
 import os
 def transferPictures(dbpath,querypath):#dbpath：原始图片目录，用作建图数据；querypath：提出的
-=======
-# 分割建图用图片和查询图片
-# 将文件夹下的不同类别的文件夹中的部分图片转移到另一个文件夹下的相同类别的文件夹下，并删除原文件夹中的相应图片（类似于剪切）
-# ************************
-import cv2
-import os
-def transferPictures(dbpath,querypath):
->>>>>>> d4ec8b89a4381bb5e64bdcefcc2c3dadc1d52299
     if(os.path.exists(dbpath) and os.path.exists(querypath)):
 
         image_name_list=os.listdir(dbpath)
@@ -57,11 +44,7 @@ def transferPictures(dbpath,querypath):
         image_name_list.sort()
 
         for i in range(0,len(image_name_list)):
-<<<<<<< HEAD
             if i%50==0:#每隔50张取出一张作为查询图片
-=======
-            if i%50==0:
->>>>>>> d4ec8b89a4381bb5e64bdcefcc2c3dadc1d52299
                 img = cv2.imread(dbpath + "/" + image_name_list[i])
                 cv2.imwrite(querypath + "/" + image_name_list[i], img)
                 os.remove(dbpath + "/" + image_name_list[i])
@@ -69,7 +52,6 @@ def transferPictures(dbpath,querypath):
         print("路径不存在")
 
                 #print(image_name_list[i])
-<<<<<<< HEAD
 
 def create_querylist(queryimage_dir):
 
@@ -120,19 +102,10 @@ str="front_left"
 create_querylist('/media/autolab/disk_3T/caiyingfeng/localization/data/aachen/image/query_'+str+'/')
 #ground_truth('/media/autolab/disk_3T/caiyingfeng/6DOF/F1/'+str+'.txt','/media/autolab/disk_3T/caiyingfeng/darknet/'+str+'.txt')#时间戳位姿,darknet用list
 
-=======
-        
-
-                             
-                        
-#transferPictures("/media/autolab/disk_3T/caiyingfeng/huawei/0711/F1/front_right","/media/autolab/disk_3T/caiyingfeng/localization/data/aachen/image/query_fr")
-transferPictures("/media/autolab/disk_3T/caiyingfeng/mask/front_left","/media/autolab/disk_3T/caiyingfeng/mask/query_fl")
->>>>>>> d4ec8b89a4381bb5e64bdcefcc2c3dadc1d52299
 
 
 
 
-<<<<<<< HEAD
 
 
 
@@ -172,62 +145,4 @@ transferPictures("/media/autolab/disk_3T/caiyingfeng/mask/front_left","/media/au
 #         line+=str_dof[7].strip("\n")+' ' 
 #         #print(line) 
 #         f.write(line+'\n')
-=======
-# # # ******************************
-# # # 提取查询用图片，同时生成查询图片位姿真值
-# # # ******************************
-# import cv2
-# import os
-
-# def read_directory(start_path,end_path):
-
-
-#     image_name_list=os.listdir(start_path)
-      
-#     image_name_list.sort()
-
-#     for i in range(0,len(image_name_list),50):
-#         #print(image_name_list[i])
-#         img = cv2.imread(start_path + "/" + image_name_list[i])
-#         cv2.imwrite(end_path + "/" + image_name_list[i], img)
-
-# def ground_truth(time_path,name_path):
-#     f=open(time_path)
-#     f_dof=list(f)
-#     f.close
-#     f=open(name_path)
-#     im_name=list(f)
-#     im_name.sort()
-#     f.close()
-#     i_path='/media/autolab/disk_3T/caiyingfeng/stamped_groundtruth.txt'
-#     for i in range(0,len(f_dof),50):
-#         str_dof=f_dof[i].split(' ',-1)
-#         str_name=im_name[i].split('/',-1)
-#         name=str_name[-1]
-#         name=name.strip("\n")
-
-#         with open(i_path, 'a') as f:   
-#                 line=name.strip(".jpg")+' '    
-#                 line+=str_dof[1]+' '
-#                 line+=str_dof[2]+' '
-#                 line+=str_dof[3]+' '
-#                 line+=str_dof[4]+' '
-#                 line+=str_dof[5]+' '
-#                 line+=str_dof[6]+' '
-#                 line+=str_dof[7].strip("\n")+' ' 
-                
-#                 #print(line) 
-                
-                
-        
-#                 f.write(line+'\n')
-
-
-
-
-# #这里传入所要读取文件夹的绝对路径，加引号（引号不能省略！）
-# #read_directory("/media/autolab/disk_3T/caiyingfeng/huawei/0711/F1/front_center","/media/autolab/disk_3T/caiyingfeng/localization/data/aachen/image/query")
-# ground_truth('/media/autolab/disk_3T/caiyingfeng/6DOF/F1/front_center.txt','/media/autolab/disk_3T/caiyingfeng/darknet/front_center.txt')#时间戳位姿,darknet用list
-
->>>>>>> d4ec8b89a4381bb5e64bdcefcc2c3dadc1d52299
 
