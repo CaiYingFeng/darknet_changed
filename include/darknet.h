@@ -8,8 +8,8 @@
 #ifdef GPU
     #define BLOCK 512
 
-    #include "cuda_runtime.h"
-    #include "curand.h"
+    #include "/usr/local/cuda-10.1/targets/x86_64-linux/include/cuda_runtime.h"
+    #include "/usr/local/cuda-10.1/targets/x86_64-linux/include/curand.h"
     #include "cublas_v2.h"
 
     #ifdef CUDNN
