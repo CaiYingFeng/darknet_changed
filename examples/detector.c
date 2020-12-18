@@ -646,9 +646,9 @@ void test_detector(char *datacfg, char *cfgfile, char *weightfile, char *filenam
             char **paths = (char **)list_to_array(plist);
              printf("Start Testing!\n");
             int m = plist->size;
-            if(access("/media/autolab/disk_3T/caiyingfeng/out",0)==-1)//"/home/FENGsl/darknet/data"修改成自己的路径
+            if(access("/media/autolab/disk_4T/cyf/hw/mask/3to1",0)==-1)//"/home/FENGsl/darknet/data"修改成自己的路径
             {
-              if (mkdir("/media/autolab/disk_3T/caiyingfeng/out",0777))//"/home/FENGsl/darknet/data"修改成自己的路径
+              if (mkdir("/media/autolab/disk_4T/cyf/hw/mask/3to1",0777))//"/home/FENGsl/darknet/data"修改成自己的路径
                {
                  printf("creat file bag failed!!!");
                }
@@ -667,8 +667,8 @@ void test_detector(char *datacfg, char *cfgfile, char *weightfile, char *filenam
         float *X = sized.data;
         time=what_time_is_it_now();
         network_predict(net, X);
-        printf("Try Very Hard:");
-        printf("%s: Predicted in %f seconds.\n", path, what_time_is_it_now()-time);
+        // printf("Try Very Hard:");
+        // printf("%s: Predicted in %f seconds.\n", path, what_time_is_it_now()-time);
         int nboxes = 0;
         detection *dets = get_network_boxes(net, im.w, im.h, thresh, hier_thresh, 0, 1, &nboxes);
         //printf("%d\n", nboxes);
@@ -699,7 +699,7 @@ void test_detector(char *datacfg, char *cfgfile, char *weightfile, char *filenam
              }
             
             // 打开本地的txt文件，'a'表示追加的意思，还有'w','r'等等，可以去详细查看用法
-             FILE *fp = fopen("/media/autolab/disk_3T/caiyingfeng/ground.txt", "a");
+             FILE *fp = fopen("/media/autolab/disk_4T/cyf/hw/mask/ground.txt", "a");
             // fp为空说明，打开文件失败
              if(fp ==NULL)
              {
@@ -709,7 +709,7 @@ void test_detector(char *datacfg, char *cfgfile, char *weightfile, char *filenam
             {
                  // printf("start to wirite file \n");
                  //  fprintf(save_txt,"%s\t%d\t%d\t%d\t%d\t%.2f\n", names[class], left, top, right-left, bot-top, dets[i].prob[class]);
-                 printf("%s\n",result); 
+                //  printf("%s\n",result); 
                  //  fprint()表示将 result 输出（或叫写）入文件中
                 fprintf(fp,"\n%s",result);
                
@@ -725,7 +725,7 @@ void test_detector(char *datacfg, char *cfgfile, char *weightfile, char *filenam
                 
                 
                 
-        grayscale_image_3c(im);
+        grayscale_image_3c(im);//空余部分涂白
         draw_detections(im, dets, nboxes, thresh, names, alphabet, l.classes);
           
        // draw_save_detections(   im,             /* 原始图像 */
@@ -745,7 +745,7 @@ void test_detector(char *datacfg, char *cfgfile, char *weightfile, char *filenam
         else{
              
              char b[2048];
-            sprintf(b,"/media/autolab/disk_3T/caiyingfeng/out/%s",GetFilename(path));//"/home/FENGsl/darknet/data"修改成自己的路径
+            sprintf(b,"/media/autolab/disk_4T/cyf/hw/mask/3to1/%s",GetFilename(path));//"/home/FENGsl/darknet/data"修改成自己的路径
             /*FILE *fp1 = fopen("/home/autolab/caiyingfeng/darknet/imdata.txt", "a");
             for(int myi=0;i<im.w*im.h;i++){
                 if(myi%im.w==0)

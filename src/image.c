@@ -346,7 +346,7 @@ void draw_detections(image im, detection *dets, int num, float thresh, char **na
                 // strcat(labelstr,res);
                 // strcat(labelstr,"%");
                 //  显示精度结束
-                printf("%s: %.0f%%\n", names[j], dets[i].prob[j]*100);
+                // printf("%s: %.0f%%\n", names[j], dets[i].prob[j]*100);
             }
         }
         if(class >= 0){
@@ -359,7 +359,7 @@ void draw_detections(image im, detection *dets, int num, float thresh, char **na
                }
              */
  
-            printf("%d %s\n", i, names[class]);
+            // printf("%d %s\n", i, names[class]);
             int offset = class*123457 % classes;
             float red = get_color(2,offset,classes);
             float green = get_color(1,offset,classes);
